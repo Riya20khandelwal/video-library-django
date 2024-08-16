@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video List</title>
+</head>
+<body>
+    <h2>Videos</h2>
+    <ul>
+        {% for video in videos %}
+            <li>
+                <h3>{{ video.title }}</h3>
+                <p>{{ video.description }}</p>
+                {% if video.video_url %}
+                    <iframe width="560" height="315" src="{{ video.video_url }}" frameborder="0" allowfullscreen></iframe>
+                {% elif video.video_file %}
+                    <video width="320" height="240" controls>
+                        <source src="{{ video.video_file.url }}" type="video/mp4">
+                    </video>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
